@@ -45,7 +45,7 @@ public enum Direction {
             return SOUTH;
         }
     };
-    private String direction;
+    private final String direction;
 
     Direction(String direction) {
         this.direction = direction;
