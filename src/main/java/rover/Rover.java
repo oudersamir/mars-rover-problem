@@ -18,8 +18,9 @@ public class Rover {
     }
 
     public void executeCommand(String commands){
-
+        commands.chars().mapToObj(c->(char)c).forEach(this::process);
     }
+
     private void process(char command){
         switch (command){
             case 'L':
