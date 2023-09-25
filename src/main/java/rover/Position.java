@@ -39,15 +39,27 @@ public class Position {
     }
 
     public Position toRight() {
-        return new Position();
+        return new Position(x, y, direction.right());
     }
 
     public Position toLeft() {
-        return new Position();
+        return new Position(x, y, direction.left());
     }
 
     public Position move() {
-        return new Position();
+        switch (direction.toString()) {
+            case "N":
+                return new Position(x, ++y , direction);
+            case "E":
+                return new Position(++x , y, direction);
+            case "S":
+                return new Position(x, --y , direction);
+            case "W":
+                return new Position(--x, y, direction);
+            default:
+                throw new IllegalStateException("Unknown value");
+
+        }
     }
 
     @Override
