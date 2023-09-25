@@ -54,6 +54,14 @@ public enum Direction {
     public abstract Direction right();
 
     public abstract Direction left();
+    public static Direction fromCode(String code) {
+        for (Direction direction : Direction.values()) {
+            if (direction.direction.equals(code)) {
+                return direction;
+            }
+        }
+        throw new IllegalArgumentException("Invalid code: " + code);
+    }
 
     @Override
     public String toString() {

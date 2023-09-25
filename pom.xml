@@ -4,9 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mars.rover.test</groupId>
-    <artifactId>mars-rover</artifactId>
+    <artifactId>rover</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
     <properties>
+        <start-class>rover.Main</start-class>
         <java.version>11</java.version>
         <camel.version>3.18.1</camel.version>
     </properties>
@@ -19,12 +21,29 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
+
                     <source>11</source>
                     <target>11</target>
+
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>rover.Main</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
